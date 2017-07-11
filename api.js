@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 4500;
-const vendingData = require("./data");
-const purchaseData = require("./purchase");
+const vendingData = require("./dataFiles/data");
+const purchaseData = require("./dataFiles/purchase");
 const bodyParser = require("body-parser");
 
 // --- MIDDLEWARE:
