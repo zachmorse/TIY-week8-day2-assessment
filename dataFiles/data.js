@@ -25,6 +25,12 @@ var vendingData = {
       description: "Pringles",
       cost: 85,
       quantity: 10
+    },
+    {
+      id: 5,
+      description: "beef jerky",
+      cost: 85,
+      quantity: 0
     }
   ]
 };

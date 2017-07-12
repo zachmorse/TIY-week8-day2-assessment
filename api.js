@@ -19,7 +19,22 @@ app.get("/api/customer/items", (req, res) => {
 app.post("/api/customer/items/:itemId/purchases", (req, res) => {
   var itemId = req.params.itemId - 1;
   var retrievedRecord = vendingData.data[itemId];
-  retrievedRecord.quantity -= 1;
+  if (retrievedRecord.quantity >= 1) {
+    retrievedRecord.quantity -= 1;
+  }
+  res.json({ retrievedRecord });
+});
+
+app.post("/api/customer/items/:itemId/purchases/:money", (req, res) => {
+  var itemId = req.params.itemId - 1;
+  var moneyPaid = req.params.money;
+
+  var amountOverpaid = moneyPaid - vendingData.data[itemId].cost;
+  var retrievedRecord = vendingData.data[itemId];
+  if (retrievedRecord.quantity >= 1) {
+    retrievedRecord.quantity -= 1;
+  }
+  retrievedRecord.change = amountOverpaid;
   res.json({ retrievedRecord });
 });
 
